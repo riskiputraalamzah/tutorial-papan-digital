@@ -1,0 +1,24 @@
+{
+  "menus": [
+    {
+      "title": "Introduction",
+      "slug": "introduction",
+      "content": "<h1>Isi konten home</h1>"
+    },
+    {
+      "title": "Items",
+      "slug": "items",
+      "content": "<h1>Isi konten items</h1>"
+    },
+    {
+      "title": "Sheets",
+      "slug": "sheet",
+      "content": "<h1>Isi konten sheet</h1>"
+    },
+    {
+      "title": "Presentation",
+      "slug": "presentation",
+      "content": "<h1>Isi konten presentation</h1>"
+    }
+  ]
+}
