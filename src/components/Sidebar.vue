@@ -1,38 +1,65 @@
 <script setup>
-import { inject } from "vue";
+import { inject, computed } from "vue";
 import { useRouter } from "vue-router";
 
 const { show, toggleSidebar } = inject("toggleSidebar");
-const { menus } = inject("fileData");
-const { updateCurrentMenu } = inject("menus");
-const router = useRouter();
 
-const checkLink = (list) => {
+const router = useRouter();
+const menus = computed(() => {
+  return router.options.routes;
+});
+
+const checkLink = (name) => {
   if (window.innerWidth <= 992) {
     toggleSidebar();
   }
-  updateCurrentMenu(list.slug);
+  // updateCurrentMenu(list.slug);
   window.scrollTo(0, 0);
-  router.push("/");
+  router.push({ name });
 };
 </script>
 <template>
   <div :class="['sidebar bg-light', show ? 'close' : '']">
     <ul class="list-group list-group-flush">
-      <li
-        style="cursor: pointer"
-        class="list-group-item bg-transparent py-3 fs-5"
-        v-for="(list, i) in menus"
-        v-text="list.title"
-        @click="checkLink(list)"
-      ></li>
-      <!-- <li
-        style="cursor: pointer"
-        class="list-group-item bg-transparent py-3 fs-5"
-        @click="$router.push('/admin')"
-      >
-        Admin
-      </li> -->
+      <template v-for="(list, i) in menus">
+        <li
+          v-if="list.hasOwnProperty('children')"
+          class="list-group-item bg-transparent py-3 fs-5"
+        >
+          <div
+            v-text="list.title"
+            data-bs-toggle="collapse"
+            :data-bs-target="'#collapse-' + i"
+            aria-expanded="false"
+            :aria-controls="'collapse-' + i"
+          ></div>
+          <div class="collapse" :id="'collapse-' + i">
+            <ul class="list-group list-group-flush mt-3">
+              <li
+                v-for="child in list.children"
+                :class="[
+                  'list-group-item bg-transparent fs-6',
+                  $router.currentRoute.value.name == child.name
+                    ? 'text-primary'
+                    : '',
+                ]"
+                v-text="child.title"
+                @click="checkLink(child.name)"
+              ></li>
+            </ul>
+          </div>
+        </li>
+
+        <li
+          v-else
+          :class="[
+            'list-group-item bg-transparent py-3 fs-5',
+            $router.currentRoute.value.name == list.name ? 'text-primary' : '',
+          ]"
+          v-text="list.title"
+          @click="checkLink(list.name)"
+        ></li>
+      </template>
     </ul>
   </div>
 </template>
@@ -60,13 +87,17 @@ const checkLink = (list) => {
 }
 
 .sidebar::-webkit-scrollbar {
-  width: 12px;
+  width: 8px;
   background-color: #f5f5f5;
 }
 
 .sidebar::-webkit-scrollbar-thumb {
   border-radius: 10px;
   -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
-  background-color: rgb(129, 129, 129);
+  background-color: rgb(199, 199, 199);
+}
+.list-group-item {
+  cursor: pointer;
+  user-select: none;
 }
 </style>

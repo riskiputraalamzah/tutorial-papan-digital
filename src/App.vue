@@ -3,7 +3,6 @@ import { provide, reactive, computed, inject, ref } from "vue";
 
 import Navbar from "./components/Navbar.vue";
 import SidebarVue from "./components/Sidebar.vue";
-import fileData from "./assets/data.json";
 
 const maintenance = inject("maintenance");
 
@@ -23,22 +22,12 @@ provide("toggleSidebar", {
   show,
   toggleSidebar,
 });
-provide("fileData", fileData);
 
 window.addEventListener("resize", function () {
   state.currentWidth = window.innerWidth;
   state.showSidebar = state.currentWidth >= 992 ? false : true;
 });
 state.showSidebar = state.currentWidth >= 992 ? false : true;
-
-// untuk mengambil data menu apa yang di klik
-
-const currentMenu = ref("introduction");
-const updateCurrentMenu = (value) => {
-  currentMenu.value = value;
-};
-provide("menus", { currentMenu, updateCurrentMenu });
-// end
 </script>
 
 <template>
