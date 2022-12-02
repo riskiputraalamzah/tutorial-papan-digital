@@ -36,7 +36,7 @@ const saveData = () => {
     return true;
   }
   wait = true;
-  if (title == "" || description == "") {
+  if (title.value == "" || description.value == "") {
     wait = false;
     return alert("Lengkapi input terlebih dahulu");
   }
