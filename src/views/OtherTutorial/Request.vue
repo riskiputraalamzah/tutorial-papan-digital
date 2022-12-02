@@ -1,4 +1,4 @@
-<script setup>
+⁰<script setup>
 import { reactive, ref, inject } from "vue";
 const state = reactive({
   loading: true,
@@ -125,7 +125,7 @@ const saveData = () => {
                 aria-expanded="false"
                 aria-controls="collapseTwo"
               >
-                Kenapa request saya di blur ?
+                Kenapa ada list request yang di blur ?
               </button>
             </h2>
             <div
