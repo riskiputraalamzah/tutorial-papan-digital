@@ -19,7 +19,7 @@ const checkLink = (name) => {
 };
 </script>
 <template>
-  <div :class="['sidebar bg-light', show ? 'close' : '']">
+  <div :class="['sidebar', show ? 'close' : '']">
     <ul class="list-group list-group-flush">
       <template v-for="(list, i) in menus">
         <li
@@ -75,6 +75,7 @@ const checkLink = (name) => {
   bottom: 0;
   z-index: 999;
   overflow: hidden auto;
+  background-color: var(--bs-body-bg);
 }
 .sidebar.close {
   left: -300px;
