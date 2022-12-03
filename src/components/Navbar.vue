@@ -34,3 +34,8 @@ const { toggleSidebar } = inject("toggleSidebar");
     </div>
   </nav>
 </template>
+<style>
+.navbar{
+  background-color: var(--bs-body-bg) !important;
+}
+</style>
