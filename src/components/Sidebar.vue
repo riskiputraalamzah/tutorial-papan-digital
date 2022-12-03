@@ -19,7 +19,7 @@ const checkLink = (name) => {
 };
 </script>
 <template>
-  <div :class="['sidebar', show ? 'close' : '']">
+  <div :class="['sidebar shadow', show ? 'close' : '']">
     <ul class="list-group list-group-flush">
       <template v-for="(list, i) in menus">
         <li
@@ -68,7 +68,8 @@ const checkLink = (name) => {
 .sidebar {
   transition: all 0.5s ease;
   position: fixed;
-  padding: calc(65px + 1.5rem) 1rem 1rem 1rem;
+  padding: 1rem;
+  margin-top: 65px;
   top: 0;
   width: 300px;
   left: 0;
@@ -81,7 +82,7 @@ const checkLink = (name) => {
   left: -300px;
 }
 .sidebar::-webkit-scrollbar-track {
-  margin-top: 65px;
+  /* margin-top: 65px; */
   -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
   border-radius: 10px;
   background-color: #f5f5f5;
