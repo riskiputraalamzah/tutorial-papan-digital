@@ -77,7 +77,7 @@ state.showSidebar = state.currentWidth >= 992 ? false : true;
 .content {
   transition: all 0.5s ease;
 
-  padding: calc(65px + 1.5rem) 1rem 1rem calc(300px + 1rem);
+  padding: calc(65px + 1.5rem) 1rem 1rem calc(250px + 1rem);
 }
 .content.close-sidebar {
   padding-left: 1rem;

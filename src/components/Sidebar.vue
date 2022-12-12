@@ -6,9 +6,17 @@ const { show, toggleSidebar } = inject("toggleSidebar");
 
 const router = useRouter();
 const menus = computed(() => {
-  return router.options.routes;
+  // return router.options.routes.filter((r) => !("hide" in r));
+  let result = router.options.routes.filter((r) => !("hide" in r));
+  result = result.map((r) => {
+    if (r.hasOwnProperty("children")) {
+      r.children.filter((ch) => !("hide" in ch));
+    }
+    return r;
+  });
+  return result;
 });
-
+console.log(menus);
 const checkLink = (name) => {
   if (window.innerWidth <= 992) {
     toggleSidebar();
@@ -19,12 +27,12 @@ const checkLink = (name) => {
 };
 </script>
 <template>
-  <div :class="['sidebar shadow', show ? 'close' : '']">
+  <div :class="['sidebar shadow-sm', show ? 'close' : '']">
     <ul class="list-group list-group-flush">
       <template v-for="(list, i) in menus">
         <li
           v-if="list.hasOwnProperty('children')"
-          class="list-group-item bg-transparent py-3 fs-5"
+          :class="['list-group-item bg-transparent py-3 fs-5']"
         >
           <div
             v-text="list.title"
@@ -42,6 +50,7 @@ const checkLink = (name) => {
                   $router.currentRoute.value.name == child.name
                     ? 'text-primary'
                     : '',
+                  'hide' in child ? 'd-none' : '',
                 ]"
                 v-text="child.title"
                 @click="checkLink(child.name)"
@@ -71,7 +80,7 @@ const checkLink = (name) => {
   padding: 1rem;
   margin-top: 65px;
   top: 0;
-  width: 300px;
+  width: 250px;
   left: 0;
   bottom: 0;
   z-index: 999;
@@ -79,7 +88,7 @@ const checkLink = (name) => {
   background-color: var(--bs-body-bg);
 }
 .sidebar.close {
-  left: -300px;
+  left: -250px;
 }
 .sidebar::-webkit-scrollbar-track {
   /* margin-top: 65px; */

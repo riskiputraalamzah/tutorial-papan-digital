@@ -6,31 +6,33 @@ const router = createRouter({
   routes: [
     {
       path: "/",
-      title: "INTRODUCTION",
+      title: "Introduction",
       name: "introduction",
       component: HomeView,
     },
     {
       path: "/items",
-      title: "ITEMS",
-      children: [
-        {
-          path: "",
-          title: "Definisi",
-          name: "definisi-items",
-          component: () => import("../views/Items/Main.vue"),
-        },
-        {
-          path: "tambah-data",
-          title: "Tambah Data",
-          name: "tambah-data-items",
-          component: () => import("../views/Items/TambahData.vue"),
-        },
-      ],
+      title: "Items",
+      name: "items",
+      component: () => import("../views/Items/Main.vue"),
+      // children: [
+      //   {
+      //     path: "",
+      //     title: "Definisi",
+      //     name: "definisi-items",
+      //     component: () => import("../views/Items/Main.vue"),
+      //   },
+      //   {
+      //     path: "tambah-data",
+      //     title: "Tambah Data",
+      //     name: "tambah-data-items",
+      //     component: () => import("../views/Items/TambahData.vue"),
+      //   },
+      // ],
     },
     {
       path: "/sheets",
-      title: "SHEETS",
+      title: "Sheets",
       children: [
         {
           path: "",
@@ -41,6 +43,7 @@ const router = createRouter({
         {
           path: "tambah-data",
           title: "Tambah Data",
+          hide: true,
           name: "tambah-data-sheets",
           component: () => import("../views/Sheets/TambahData.vue"),
         },
@@ -48,11 +51,13 @@ const router = createRouter({
     },
     {
       path: "/other-tutorial",
-      title: "OTHER TUTORIAL",
+      title: "Other Tutorial",
+      hide: true,
       children: [
         {
           path: "request",
           title: "Request",
+          hide: true,
           name: "other-tutorial-request",
           component: () => import("../views/OtherTutorial/Request.vue"),
         },

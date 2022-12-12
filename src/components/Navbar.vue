@@ -3,7 +3,7 @@ import { inject } from "vue";
 const { toggleSidebar } = inject("toggleSidebar");
 </script>
 <template>
-  <nav class="navbar navbar-expand-lg bg-light navbar-light shadow fixed-top">
+  <nav class="navbar navbar-expand-lg navbar-light shadow fixed-top">
     <div class="container-fluid">
       <a class="navbar-brand text-truncate" href="#">
         <div class="d-flex align-items-center">
