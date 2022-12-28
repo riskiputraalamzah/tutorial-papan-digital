@@ -33,6 +33,7 @@ const router = createRouter({
     {
       path: "/sheets",
       title: "Sheets",
+      hide: true,
       children: [
         {
           path: "",

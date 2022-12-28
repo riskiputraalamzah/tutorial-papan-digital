@@ -25,19 +25,11 @@ const dataToc = [
     <div class="row gy-5">
       <div class="col-lg-9">
         <div class="display-3 fw-semi-bold">Items</div>
-        <div class="h3 mt-2">
+        <div class="h3 mt-2 subtitle-page">
           Halaman ini akan membahas tentang tata cara pengoperasian/penggunaan
           menu items
         </div>
-        <button
-          class="btn btn-outline-primary my-4 btn-lg d-lg-none rounded-pill"
-          type="button"
-          data-bs-toggle="offcanvas"
-          data-bs-target="#toc"
-          aria-controls="toc"
-        >
-          &rArr; Show Table Of Content &lArr;
-        </button>
+        <TOCVue :data="dataToc" class="mt-5 d-lg-none d-block" />
         <div class="mt-5">
           <div id="halaman-utama">
             <div
@@ -47,7 +39,7 @@ const dataToc = [
             </div>
 
             <p class="mt-4">
-              Pada halama utama, terdapat semua data list dari tabel items.
+              Pada halaman utama, terdapat semua data list dari tabel items.
               Data-data tersebut saling terhubung(relasi) dengan tabel dari menu
               sheet.
               <br />
@@ -72,7 +64,7 @@ const dataToc = [
           </div>
         </div>
       </div>
-      <div class="col-lg-3">
+      <div class="col-lg-3 d-lg-block d-none">
         <TOCVue :data="dataToc" />
       </div>
     </div>

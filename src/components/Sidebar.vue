@@ -16,7 +16,7 @@ const menus = computed(() => {
   });
   return result;
 });
-console.log(menus);
+// console.log(menus);
 const checkLink = (name) => {
   if (window.innerWidth <= 992) {
     toggleSidebar();
